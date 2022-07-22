@@ -79,7 +79,7 @@ public class DemoController {
 
     @GetMapping("/api")
     public void itemApi() {
-        LogUtils.setLogId("20220721172502010174235038047A1000");
+//        LogUtils.setLogId("20220721172502010174235038047A1000");
         AuthThreadLocalUtil.set("1111114035");
         OrderOrderDetailRequest request = new OrderOrderDetailRequest();
         OrderOrderDetailParam param = request.getParam();
