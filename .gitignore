@@ -42,7 +42,7 @@
 .mtj.tmp/
 
 # 打包文件,忽略所有以[.jar]或[.war]或[.nar]或[.ear]或[.zip]或[.tar.gz]或[rar]结尾的文件.
-*.jar
+#*.jar
 *.war
 *.nar
 *.ear
