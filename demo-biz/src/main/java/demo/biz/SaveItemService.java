@@ -27,6 +27,7 @@ public class SaveItemService implements ExtensionServiceHandler<ItemDTO, Integer
         log.info("SaveItemService ...");
 
         return BaseResponse.<Integer>builder()
+                .success(true)
                 .data(123)
                 .build();
     }
