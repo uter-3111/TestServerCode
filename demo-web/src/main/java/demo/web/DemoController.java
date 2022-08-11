@@ -45,8 +45,6 @@ public class DemoController {
     @Autowired
     private ExceptionCheckPlanService exceptionCheckPlanService;
 
-    @Value("${cloud.open.url:https://openapi-fxg.jinritemai.com}")
-    private String openRequestUrl;
 
     @RequestMapping("/hello")
     public String hello() {
@@ -84,7 +82,6 @@ public class DemoController {
         OrderOrderDetailRequest request = new OrderOrderDetailRequest();
         OrderOrderDetailParam param = request.getParam();
         param.setShopOrderId("4949486364490458473");
-        request.getConfig().setOpenRequestUrl(openRequestUrl);
         OrderOrderDetailResponse response = request.execute();
 
         log.info("response: {}", JSON.toJSONString(response));
