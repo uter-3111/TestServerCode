@@ -11,6 +11,7 @@ import com.doudian.open.core.GlobalConfig;
 import com.jinritemai.cloud.base.api.TokenService;
 import com.jinritemai.cloud.base.core.util.AuthThreadLocalUtil;
 import com.jinritemai.cloud.base.core.util.LogUtils;
+import demo.api.ItemDTO;
 import demo.biz.ExceptionCheckPlanService;
 import demo.biz.UserService;
 import demo.dal.entity.ExceptionCheckPlan;
@@ -19,9 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -85,6 +84,11 @@ public class DemoController {
         OrderOrderDetailResponse response = request.execute();
 
         log.info("response: {}", JSON.toJSONString(response));
+    }
+
+    @PostMapping("/post")
+    public String testPost(@RequestBody ItemDTO itemDTO) {
+        return itemDTO.getTitle();
     }
 
 }

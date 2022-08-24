@@ -4,6 +4,7 @@ import com.jinritemai.cloud.base.api.BaseRequest;
 import com.jinritemai.cloud.base.api.BaseResponse;
 import com.jinritemai.cloud.base.api.ExtensionService;
 import com.jinritemai.cloud.base.api.ExtensionServiceHandler;
+import com.jinritemai.cloud.base.core.util.AuthThreadLocalUtil;
 import demo.api.ItemDTO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +21,8 @@ public class GetItemService implements ExtensionServiceHandler<Integer, ItemDTO>
         // 轻应用前端的业务传参
 //        final ItemDTO itemDTO = req.getData();
 //        final String authId = req.getAuthId();
+
+
 
         // 业务逻辑处理
         // do something...
