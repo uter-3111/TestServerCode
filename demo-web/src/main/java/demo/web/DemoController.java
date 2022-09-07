@@ -33,7 +33,7 @@ import java.util.List;
 @RequestMapping("/demo")
 @Slf4j
 public class DemoController {
-    private static final String LOG_ID_KEY = "LOG_ID";
+    private static final String LOG_ID_KEY = "x-tt-logid";
 
     @Autowired
     private UserService userService;
@@ -47,10 +47,41 @@ public class DemoController {
 
     @RequestMapping("/hello")
     public String hello() {
-        final String word = "hello world!";
+        final String word = "Hello New World!";
         log.info(word);
         return word;
     }
+
+    @RequestMapping("/infolog")
+    public String infolog() {
+        long logstime = System.currentTimeMillis();
+        MDC.put(LOG_ID_KEY, "20220" + logstime + "01");
+        String podName = System.getenv("HOSTNAME");
+        final String word = "info log! pod_name: " + podName+"To be, or not to be, that is a question: Whether it is nobler in the mind to suffer. The slings and arrows of outrageous fortune Or to take arms against a sea of troubles, And by opposing end them? To die: to sleep; No more; and by a sleep to say we end The heart-ache and the thousand natural shocks That flesh is heir to, 'tis a consummation Devoutly to be wish'd. To die, to sleep To sleep- perchance to dream: ay, there's the rub! For in that sleep of death what dreams may come When we have shuffled off this mortal coil, Must give us pause. There 's the respect That makes calamity of so long life--William Shakespeare 2：To be, or not to be, that is a question: Whether it is nobler in the mind to suffer. The slings and arrows of outrageous fortune Or to take arms against a sea of troubles, And by opposing end them? To die: to sleep; No more; and by a sleep to say we end The heart-ache and the thousand natural shocks That flesh is heir to, 'tis a consummation Devoutly to be wish'd. To die, to sleep To sleep- perchance to dream: ay, there's the rub! For in that sleep of death what dreams may come When we have shuffled off this mortal coil, Must give us pause. There 's the respect That makes calamity of so long life--William Shakespeare";
+        log.info(word);
+        return word;
+    }
+
+    @RequestMapping("/errlog")
+    public String errlog() {
+        long logstime = System.currentTimeMillis();
+        MDC.put(LOG_ID_KEY, "20220" + logstime + "03");
+        String podName = System.getenv("HOSTNAME");
+        final String word = "error log! pod_name: " + podName;
+        log.error(word);
+        return word;
+    }
+
+    @RequestMapping("/wranlog")
+    public String wranlog() {
+        long logstime = System.currentTimeMillis();
+        MDC.put(LOG_ID_KEY, "20220" + logstime + "02");
+        String podName = System.getenv("HOSTNAME");
+        final String word = "wran log!pod_name: " + podName;
+        log.warn(word);
+        return word;
+    }
+
 
     @RequestMapping("/token")
     public String token() {
